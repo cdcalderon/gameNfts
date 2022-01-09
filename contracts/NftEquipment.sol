@@ -5,7 +5,7 @@ import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
-contract NFTFarm is Ownable, ERC1155Holder {
+contract NFTEquipment is Ownable, ERC1155Holder {
     struct UserInfo {
         uint256 stakedAmount;
         uint256 lastUpdateAt;
