@@ -13,4 +13,15 @@ contract Crops is
         _mint(msg.sender, HAMMER, 100, "");
         _mint(msg.sender, PISTOL, 2000, "");
     }
+
+    function addNFTs(
+        uint256[] calldata _ids,
+        uint256[] calldata _totals, // amount of NFTs deposited to farm (need to approve before)
+        uint256[] calldata _prices
+    ) external onlyOwner {
+        require(
+            _ids.length == _totals.length || _totals.length == _prices.length,
+            "Incorrect length"
+        );
+    }
 }
