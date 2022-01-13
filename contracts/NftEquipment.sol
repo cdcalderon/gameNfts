@@ -41,4 +41,10 @@ contract NFTEquipment is Ownable, ERC1155Holder {
             nftInfo.push(NFTInfo({id: _ids[i], remaining: _totals[i], price: _prices[i]}));
         }
     }
+
+    function stakeTokens(uint256 _amount) external {
+        token.transferFrom(msg.sender, address(this), _amount);
+
+        UserInfo storage user = userInfo[msg.sender];
+    }
 }
