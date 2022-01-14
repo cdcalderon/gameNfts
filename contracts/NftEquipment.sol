@@ -46,5 +46,12 @@ contract NFTEquipment is Ownable, ERC1155Holder {
         token.transferFrom(msg.sender, address(this), _amount);
 
         UserInfo storage user = userInfo[msg.sender];
+
+        // already deposited before
+        if (user.stakedAmount != 0) {
+            user.pointsDebt = pointsBalance(msg.sender);
+        }
+        user.stakedAmount += _amount;
+        user.lastUpdateAt = block.timestamp;
     }
 }
