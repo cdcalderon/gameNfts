@@ -54,4 +54,13 @@ contract NFTEquipment is Ownable, ERC1155Holder {
         user.stakedAmount += _amount;
         user.lastUpdateAt = block.timestamp;
     }
+
+    // claim nfts if points threshold reached
+    function claimNFTs(uint256[] calldata _nftIndexes, uint256[] calldata _quantities) external {
+        require(_nftIndexes.length == _quantities.length, "Incorrect array length");
+
+        for (uint64 i = 0; i < _nftIndexes.length; i++) {
+            NFTInfo storage nft = nftInfo[_nftIndexes[i]];
+        }
+    }
 }
