@@ -75,4 +75,9 @@ contract NFTEquipment is Ownable, ERC1155Holder {
             nft.remaining -= _quantities[i];
         }
     }
+
+    function unstakeTokens() public {
+        UserInfo memory user = userInfo[msg.sender];
+        require(user.stakedAmount > 0, "staking balance cannot be 0");
+    }
 }
