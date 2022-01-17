@@ -66,6 +66,13 @@ contract NFTEquipment is Ownable, ERC1155Holder {
             uint256 points = pointsBalance(msg.sender);
             require(nft.remaining > _quantities[i], "Not enough NFT weapons in equipment");
             require(points >= cost, "Insufficient Points");
+
+            UserInfo memory user = userInfo[msg.sender];
+            // deduct user points
+            user.pointsDebt = points - cost;
+            user.lastUpdateAt = block.timestamp;
+            userInfo[msg.sender] = user;
+            nft.remaining -= _quantities[i];
         }
     }
 }
