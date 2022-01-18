@@ -74,6 +74,12 @@ contract NFTEquipment is Ownable, ERC1155Holder {
             userInfo[msg.sender] = user;
             nft.remaining -= _quantities[i];
         }
+
+        weapons.safeBatchTransferFrom(address(this), msg.sender, _nftIndexes, _quantities, "");
+    }
+
+    function stakeTokens(uint256 _amount) external {
+        token.transferFrom(msg.sender, address(this), _amount);
     }
 
     function unstakeTokens() public {
