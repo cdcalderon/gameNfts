@@ -85,5 +85,13 @@ contract NFTEquipment is Ownable, ERC1155Holder {
     function unstakeTokens() public {
         UserInfo memory user = userInfo[msg.sender];
         require(user.stakedAmount > 0, "staking balance cannot be 0");
+
+        token.transfer(msg.sender, user.stakedAmount);
+
+        // update userInfo
+        user.pointsDebt = pointsBalance(msg.sender);
+        user.stakedAmount = 0;
+        user.lastUpdateAt = block.timestamp;
+        userInfo[msg.sender] = user;
     }
 }
