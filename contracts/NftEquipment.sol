@@ -94,4 +94,8 @@ contract NFTEquipment is Ownable, ERC1155Holder {
         user.lastUpdateAt = block.timestamp;
         userInfo[msg.sender] = user;
     }
+
+    function nftCount() public view returns (uint256) {
+        return nftInfo.length;
+    }
 }
