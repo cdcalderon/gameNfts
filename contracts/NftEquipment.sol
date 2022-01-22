@@ -95,11 +95,16 @@ contract NFTEquipment is Ownable, ERC1155Holder {
         userInfo[msg.sender] = user;
     }
 
-    function _unDebitedPoints(UserInfo memory user) internal view returns (uint256) {
-        return (block.timestamp - user.lastUpdateAt) * (emissionRate * user.stakedAmount);
+    function pointsBalance(address userAddress) public view returns (uint256) {
+        UserInfo storage user = userInfo[userAddress];
+        return (user.pointsDebt + (_unDebitedPoints(user)));
     }
 
     function nftCount() public view returns (uint256) {
         return nftInfo.length;
+    }
+
+    function _unDebitedPoints(UserInfo memory user) internal view returns (uint256) {
+        return (block.timestamp - user.lastUpdateAt) * (emissionRate * user.stakedAmount);
     }
 }
