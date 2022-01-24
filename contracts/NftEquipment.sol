@@ -7,9 +7,9 @@ import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
 contract NFTEquipment is Ownable, ERC1155Holder {
     struct UserInfo {
-        uint256 stakedAmount;
-        uint256 lastUpdateAt;
-        uint256 pointsDebt;
+        uint256 stakedAmount; // current amount of tokens staked
+        uint256 lastUpdateAt; // timestamp for last details update (when pointsDebt calculated)
+        uint256 pointsDebt; // total wei points collected before latest deposit.
     }
 
     struct NFTInfo {
