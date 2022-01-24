@@ -21,10 +21,16 @@ contract NFTEquipment is Ownable, ERC1155Holder {
     uint256 public emissionRate; // wei points (1 point = 10**18) generated per token per second staked
     DaiToken public token; // mock dai token being staked
     Weapons public weapons; // ERC-1155 NFT weapons contract
+    NFTInfo[] public nftInfo;
 
-    constructor(uint256 _emissionRate, DaiToken _token) {
+    constructor(
+        uint256 _emissionRate,
+        DaiToken _token,
+        Weapons weapons
+    ) {
         emissionRate = _emissionRate;
         token = _token;
+        weapons = _weapons;
     }
 
     function addNFTs(
