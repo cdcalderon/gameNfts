@@ -12,6 +12,10 @@ contract Crops is
     constructor() {
         _mint(msg.sender, HAMMER, 100, "");
         _mint(msg.sender, PISTOL, 2000, "");
+        _mint(msg.sender, SHIELD, 3000, "");
+        _mint(msg.sender, BOW, 5000, "");
+        _mint(msg.sender, GRENADE, 10000, "");
+        _mint(msg.sender, AKM, 20000, "");
     }
 
     function addNFTs(
