@@ -13,4 +13,8 @@ const { network, deployments, getNamedAccounts, ethers } = require("hardhat")
               nftEquipmentContract = await ethers.getContract("NftEquipment")
               nftEquipment = await ethers.getContract("NftEquipment", deployer)
           })
+
+          describe("constructor", async () => {
+              beforeEach(async () => {})
+          })
       })
